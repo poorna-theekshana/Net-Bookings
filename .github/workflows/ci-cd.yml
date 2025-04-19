@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./auth-service/Dockerfile
           push: true
           tags: poornatheekshana/auth-service:latest
