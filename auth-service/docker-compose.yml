@@ -1,0 +1,8 @@
+services:
+  auth-service:
+    build: .
+    container_name: auth-service-container
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
