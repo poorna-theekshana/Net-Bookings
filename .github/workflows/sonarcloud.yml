@@ -26,10 +26,11 @@ jobs:
         run: npm install
 
       - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectBaseDir: ./auth-service
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: poorna-theekshana_Net-Bookings
-          SONAR_ORGANIZATION: poorna-theekshana
+        run: |
+          npx sonar-scanner \
+            -Dsonar.projectKey=poorna-theekshana_Net-Bookings \
+            -Dsonar.organization=poorna-theekshana \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.sources=. \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+        working-directory: ./auth-service
