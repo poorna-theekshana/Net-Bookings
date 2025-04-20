@@ -1,4 +1,5 @@
 const request = require("supertest");
+const mongoose = require("mongoose");
 const express = require("express");
 const app = require("../server");
 
@@ -19,3 +20,7 @@ describe("Auth Routes", () => {
     expect(res.body).toHaveProperty("message", "Auth Service is working!");
   });
 });
+
+afterAll(async () => {
+    await mongoose.connection.close(); // Close DB
+  });
