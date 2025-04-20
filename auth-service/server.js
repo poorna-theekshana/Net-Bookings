@@ -4,8 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
-// Import Routes
+const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 
 // Initialize Express App
@@ -33,6 +32,13 @@ mongoose
 
 // API Routes
 app.use("/api/auth", authRoutes);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.js"));
+});
 
 // Start Server
 app.listen(PORT, () => {
