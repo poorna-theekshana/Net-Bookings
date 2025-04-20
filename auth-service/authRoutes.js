@@ -1,9 +1,9 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
-const User = require("../models/User");
-const { generateToken } = require("../utils/jwt");
-const authMiddleware = require("../middleware/authMiddleware");
+const User = require("./User");
+const { generateToken } = require("./jwt");
+const authMiddleware = require("./authMiddleware");
 
 require("dotenv").config();
 const router = express.Router();
@@ -79,6 +79,11 @@ router.get("/me", authMiddleware, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
+});
+
+
+router.get("/", (req, res) => {
+  res.json({ message: "Auth Service is working!" });
 });
 
 module.exports = router;

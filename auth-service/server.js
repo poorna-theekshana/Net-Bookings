@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 // Import Routes
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./authRoutes");
+const path = require("path");
 
 // Initialize Express App
 const app = express();
@@ -34,7 +35,17 @@ mongoose
 // API Routes
 app.use("/api/auth", authRoutes);
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Auth Service running on port ${PORT}`);
+module.exports = app;
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.js"));
 });
+
+// Start Server
+if (require.main === module){
+  app.listen(PORT, () => {console.log(`Auth Service running on port ${PORT}`);});
+}
+
