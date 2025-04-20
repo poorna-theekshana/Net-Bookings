@@ -2,7 +2,7 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = require("../server");
-
+//tests for the Auth routes
 describe("Auth Routes", () => {
 
   it("should return 400 on /login POST with missing body", async () => {
