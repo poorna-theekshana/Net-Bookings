@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - main  # or your default branch
+      - main
 
 jobs:
   test:
@@ -20,12 +20,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: |
-          cd auth-service  # or root if tests are there
-          npm install
+      - name: Set environment variables
+        working-directory: ./auth-service
+        run: echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
 
-      - name: Run Tests
-        run: |
-          cd auth-service
-          npm test
+      - name: Install dependencies
+        working-directory: ./auth-service
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./auth-service
+        env:
+          NODE_ENV: test
+        run: npm test
