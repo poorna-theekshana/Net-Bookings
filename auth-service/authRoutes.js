@@ -81,7 +81,7 @@ router.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
-
+//service initialization
 router.get("/", (req, res) => {
   res.json({ message: "Auth Service is working!" });
 });
