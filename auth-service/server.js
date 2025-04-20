@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 // Import Routes
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./authRoutes");
 
 // Initialize Express App
 const app = express();
@@ -34,7 +34,10 @@ mongoose
 // API Routes
 app.use("/api/auth", authRoutes);
 
+module.exports = app;
+
 // Start Server
-app.listen(PORT, () => {
-  console.log(`Auth Service running on port ${PORT}`);
-});
+if (require.main === module){
+  app.listen(PORT, () => {console.log(`Auth Service running on port ${PORT}`);});
+}
+
