@@ -37,13 +37,6 @@ app.use("/api/auth", authRoutes);
 
 module.exports = app;
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "frontend/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build", "index.js"));
-});
-
 // Start Server
 if (require.main === module){
   app.listen(PORT, () => {console.log(`Auth Service running on port ${PORT}`);});

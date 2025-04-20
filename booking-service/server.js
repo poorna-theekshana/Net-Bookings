@@ -11,14 +11,10 @@ const { v4: uuidv4 } = require("uuid");
 const cron = require("node-cron");
 
 // Import Models
-const Booking = require("./models/Booking");
+const Booking = require("./Booking");
 
 // Import Routes
-const authRoutes = require("./routes/authRoutes");
-const courtRoutes = require("./routes/courtRoutes");
-const bookingRoutes = require("./routes/bookingRoutes");
-const itemRoutes = require("./routes/itemRoutes");
-const userRoutes = require("./routes/userRoutes");
+const bookingRoutes = require("./bookingRoutes");
 
 // Initialize Express App
 const app = express();
@@ -46,11 +42,7 @@ mongoose
   });
 
 // API Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/courts", courtRoutes);
 app.use("/api/bookings", bookingRoutes);
-app.use("/api/items", itemRoutes);
-app.use("/api/users", userRoutes);
 
 // Scheduled Task for Recurring Bookings
 cron.schedule("0 0 * * 1", async () => {
