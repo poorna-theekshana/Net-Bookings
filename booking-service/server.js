@@ -11,10 +11,10 @@ const { v4: uuidv4 } = require("uuid");
 const cron = require("node-cron");
 
 // Import Models
-const Booking = require("./models/Booking");
+const Booking = require("./Booking");
 
 // Import Routes
-const bookingRoutes = require("./routes/bookingRoutes");
+const bookingRoutes = require("./bookingRoutes");
 
 // Initialize Express App
 const app = express();
