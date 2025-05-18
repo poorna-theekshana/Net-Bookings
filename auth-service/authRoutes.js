@@ -207,6 +207,7 @@ router.get("/me", authMiddleware, async (req, res) => {
  *       200:
  *         description: Auth Service is working
  */
+
 router.get("/", (req, res) => {
   res.json({ message: "Auth Service is working!" });
 });

@@ -17,6 +17,10 @@ const swaggerOptions = {
   },
   apis: ["./authRoutes.js"], // Path to your route files
 };
+// Example route 11
+router.get("/", (req, res) => {
+  res.json({ message: "Auth Service is working!" });
+});
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
