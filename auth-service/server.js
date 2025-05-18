@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocs = require("./swaggerConfig");
 
 // Import Routes
 const authRoutes = require("./authRoutes");
@@ -37,8 +39,18 @@ app.use("/api/auth", authRoutes);
 
 module.exports = app;
 
+// Serve Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 // Start Server
-if (require.main === module){
-  app.listen(PORT, () => {console.log(`Auth Service running on port ${PORT}`);});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Auth Service running on port ${PORT}`);
+  });
 }
 
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
