@@ -29,7 +29,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           projectBaseDir: ./auth-service
+          projectKey: poorna-theekshana_Net-Bookings
+          organization: poorna-theekshana
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: poorna-theekshana_Net-Bookings
-          SONAR_ORGANIZATION: poorna-theekshana
