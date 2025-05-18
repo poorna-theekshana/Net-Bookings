@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Example route
+// Example route 11
 router.get("/", (req, res) => {
   res.json({ message: "Auth Service is working!" });
 });
