@@ -211,5 +211,6 @@ router.get("/me", authMiddleware, async (req, res) => {
 router.get("/", (req, res) => {
   res.json({ message: "Auth Service is working!" });
 });
+//this is a comment
 
 module.exports = router;
