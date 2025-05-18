@@ -1,4 +1,4 @@
-# 1. Use official Node.js base image
+# 1. Use official Node.js base image (updated to version 18)
 FROM node:16
 
 # 2. Set working directory inside container

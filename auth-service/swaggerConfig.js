@@ -1,4 +1,3 @@
-// filepath: e:\SLIIT\CTSE\Net-Bookings\auth-service\swaggerConfig.js
 const swaggerJsDoc = require("swagger-jsdoc");
 
 const swaggerOptions = {
@@ -11,11 +10,19 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:8000", // Replace with your EC2 instance URL
+        url: "http://51.20.117.123/",
       },
     ],
   },
-  apis: ["./authRoutes.js"], // Path to your route files
+  apis: ["./routes/authRoutes.js"],
+  // If swaggerConfig.js is in the root of auth-service:
+  apis: ["./authRoutes.js"],
+
+  // If your routes are in a 'routes' folder:
+  apis: ["./routes/*.js"],
+
+  // Or use an absolute path:
+  apis: [__dirname + "/authRoutes.js"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
