@@ -31,5 +31,3 @@ jobs:
           projectBaseDir: ./auth-service
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: poorna-theekshana_Net-Bookings
-          SONAR_ORGANIZATION: poorna-theekshana
