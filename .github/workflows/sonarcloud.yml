@@ -26,7 +26,7 @@ jobs:
         run: npm install
 
       - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v1.2.0
         with:
           projectBaseDir: ./auth-service
         env:
